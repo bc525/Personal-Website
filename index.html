@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Website - Brittanie Chen</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/8fd60a4b03.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Nav Bar-->
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="images/logo.png" class="logo">
+        <ul id="sidemenu">
+          <li><a href="index.html">home</a></li>
+          <li><a href="project.html">project gallery</a></li>
+          <li><a href="resume.html">resume</a></li>
+          <li><a href="https://www.linkedin.com/in/brittanie-chen-576b241b4/">linkedIn</a></li>
+          <li><a href="https://github.coecis.cornell.edu/bc525">github</a></li>
+          <li><a href="https://bchen7544.myportfolio.com/">photography</a></li>
+          <li><a href="contact.html">contact</a></li>
+          <i class="fas fa-times" onclick="closemenu()"></i>
+        </ul>
+        <i class="fas fa-bars" onclick="openmenu()"></i>
+      </nav>
+
+      <div class="header-text">
+        <p>welcome</p>
+        <h1>hi, this is <span> Brittanie's </span>portfoilio.</h1>
+      </div>
+      <img src="images/gif.gif" class="gif">
+    </div>
+  </div>
+
+  <!-- About Section-->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="images/user.JPG" class="user">
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title"> about me</h1>
+          <p>My name is Brittanie and I am a junior studying Information Science
+            at Cornell University with a concentration in interactive technology.
+            I am an agile, ambitious student ready to apply learned principles
+            in technology, sociology, and communication. I am looking for and willing
+            to relocate for summer 2024 internships.
+          </p>
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('skills')">skills</p>
+            <p class="tab-links" onclick="opentab('education')">education</p>
+          </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>python</span><br></li>
+              <li><span>java</span><br></li>
+              <li><span>HTML and CSS</span><br></li>
+            </ul>
+          </div>
+
+          <div class="tab-contents" id="education">
+            <ul>
+              <li><span>Cornell University -- Information Science</span><br>August 2021 - May 2025</li>
+              <li><span>Brooklyn Technical High School -- Architecture </span><br> September 2017 - June 2021</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>copyright © Brittanie.</p>
+  </div>
+
+  <script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname) {
+      for (tablink of tablinks) {
+        tablink.classList.remove("active-link");
+      }
+      for (tabcontent of tabcontents) {
+        tabcontent.classList.remove("active-tab");
+      }
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+  </script>
+
+  <script>
+
+    var sidemeu = document.getElementById("sidemenu");
+
+    function openmenu() {
+      sidemeu.style.right = "0";
+    }
+    function closemenu() {
+      sidemeu.style.right = "-200px";
+    }
+
+  </script>
+  <script>
+    const scriptURL = '< add you own link here >' // add your own app script link here
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          msg.innerHTML = "Message sent successfully"
+          setTimeout(function () {
+            msg.innerHTML = ""
+          }, 5000)
+          form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+
+</html>
